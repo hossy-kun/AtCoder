@@ -10,9 +10,9 @@ const main = (argss: string[][]) => {
     const A = BigInt(argss[n+1][1]);
     let k = 0n;
     if (t/T > a/A) {
-      k = (t-1n)/T + 1n;
+      k = (t+T-1n)/T;
     } else {
-      k = (a-1n)/A + 1n;
+      k = (a+T-1n)/A;
     }
     t = T * k;
     a = A * k;
