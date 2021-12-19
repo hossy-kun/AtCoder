@@ -35,8 +35,29 @@ const intersection = (arr1: any[], arr2: any[]): any[] => {
   return result;
 }
 
+/** 次の順列を返す */
+const nextPermutation = (arr: number[]): boolean => {
+  const len = arr.length;
+  for (let i = len - 2; i >= 0; i--) {
+    if (arr[i] < arr[i + 1]) {
+      for (let j = len - 1; j > i; j--) {
+        if (arr[j] > arr[i]) {
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+          const l = (len - (i + 1)) >> 1;
+          for (let k = 0; k < l; k++) {
+            [arr[i + 1 + k], arr[len - 1 - k]] = [arr[len - 1 - k], arr[i + 1 + k]];
+          }
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
 export {
   generateArray, narray, sarray,
   generate2DArray, narray2, sarray2,
   intersection,
+  nextPermutation,
 };

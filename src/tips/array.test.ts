@@ -4,6 +4,7 @@ import {
   narray, sarray,
   narray2, sarray2,
   intersection,
+  nextPermutation
 } from "./array";
 
 describe('array generators', () => {
@@ -98,5 +99,21 @@ describe('array utilities', () => {
     expect(intersection(['a','b','c'], ['d','e'])).toEqual([]);
     expect(intersection(['a','b','c'], ['a','b','c','d','e'])).toEqual(['a','b','c']);
     expect(intersection(['a','b','c'], [])).toEqual([]);
+  });
+
+  it('nextPermutation', () => {
+    const ary = [1,2,3];
+    expect(nextPermutation(ary)).toEqual(true);
+    expect(ary).toEqual([1,3,2]);
+    expect(nextPermutation(ary)).toEqual(true);
+    expect(ary).toEqual([2,1,3]);
+    expect(nextPermutation(ary)).toEqual(true);
+    expect(ary).toEqual([2,3,1]);
+    expect(nextPermutation(ary)).toEqual(true);
+    expect(ary).toEqual([3,1,2]);
+    expect(nextPermutation(ary)).toEqual(true);
+    expect(ary).toEqual([3,2,1]);
+    expect(nextPermutation(ary)).toEqual(false);
+    expect(ary).toEqual([3,2,1]);
   });
 });
