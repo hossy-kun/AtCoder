@@ -1,23 +1,28 @@
-/**
- * 優先度付きキュー
- *
- * ## 特徴
- * - ヒープ実装
- *
- * |method|Order|
- * |---|---|
- * |push|log n|
- * |pop|log n|
- * |size|1|
- * |isEmpty|1|
- *
- * ## 参考
- *
- * https://itnext.io/priority-queue-in-typescript-6ef23116901
- * https://zenn.dev/riku/articles/e1c0ea46af0348
- */
+import * as readline from "readline";
+
+const main = (argss: string[][]) => {
+  const [N, K] = argss[0].map(Number);
+  const P = argss[1].map(Number);
+  const ans: number[] = [];
+
+  const q = new PriorityQueue<number>((a, b) => a - b);
+  for (let k = 0; k < K; k++) {
+    q.push(P[k]);
+  }
+  ans.push(q.top()!);
+
+  for (let n = K; n < N; n++) {
+    if (q.top()! < P[n]) {
+      q.pop();
+      q.push(P[n]);
+    }
+    ans.push(q.top()!);
+  }
+  console.log(ans.join('\n'));
+};
+
 export class PriorityQueue<T> {
-  private heap: T[];
+  public heap: T[];
   private comparator: (a: T, b: T) => number;
 
   constructor(comparator: (a: T, b: T) => number) {
@@ -114,3 +119,19 @@ export class PriorityQueue<T> {
     return 0 <= index && index < this.heap.length;
   }
 }
+
+// ----------------------------------------------------------------------------
+// Template
+
+const __lines: string[] = [];
+const __reader = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+__reader.on('line', (line) => {
+  __lines.push(line);
+});
+__reader.on('close', () => {
+  main(__lines.map(s => s.split(' ')));
+});
