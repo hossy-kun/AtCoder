@@ -1,11 +1,25 @@
-import { binarySearch } from "./binary-search";
+import { lowerBound, upperBound } from "./binary-search";
 
 describe('binary-search', () => {
-  it('binarySearch', () => {
-    const data = [1,2,3,4,5,6,7,8,9,10];
-    expect(binarySearch(data, (v: number) => 5 < v)).toEqual(5);
+  it('lowerBound', () => {
+    const data = [1, 4, 4, 7, 7, 8, 8, 11, 13, 19];
+    expect(lowerBound(data, 0)).toEqual(0);
+    expect(lowerBound(data, 1)).toEqual(0);
+    expect(lowerBound(data, 4)).toEqual(1);
+    expect(lowerBound(data, 6)).toEqual(3);
+    expect(lowerBound(data, 7)).toEqual(3);
+    expect(lowerBound(data, 19)).toEqual(9);
+    expect(lowerBound(data, 20)).toEqual(10);
+  });
 
-    const data2 = ['a','bb','ccc','dddd','eeeee'];
-    expect(binarySearch(data2, (v: string) => 3 <= v.length)).toEqual(2);
+  it('upperBound', () => {
+    const data = [1, 4, 4, 7, 7, 8, 8, 11, 13, 19];
+    expect(upperBound(data, 0)).toEqual(0);
+    expect(upperBound(data, 1)).toEqual(1);
+    expect(upperBound(data, 4)).toEqual(3);
+    expect(upperBound(data, 6)).toEqual(3);
+    expect(upperBound(data, 7)).toEqual(5);
+    expect(upperBound(data, 19)).toEqual(10);
+    expect(upperBound(data, 20)).toEqual(10);
   });
 });

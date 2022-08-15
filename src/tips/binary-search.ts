@@ -1,24 +1,45 @@
 
 /**
- * 2分探索
+ * 指定された要素以上の値が現れる最初の位置を取得する
  * @param list 昇順ソートされたリスト
- * @param cond 条件
- * @returns 境界値
+ * @param value 値
+ * @returns 境界インデックス
  */
-const binarySearch = <T>(list: T[], cond: (val: T) => boolean) => {
-  let ok = list.length;
-  let ng = -1;
-  while (ok - ng > 1) {
-    const mid = Math.floor((ok + ng) / 2);
-    if (cond(list[mid])) {
-      ok = mid;
+const lowerBound = <T>(list: T[], value: T): number => {
+  let r = list.length;
+  let l = -1;
+  while (1 < r - l) {
+    const mid = l + Math.floor((r - l) / 2);
+    if (list[mid] >= value) {
+      r = mid;
     } else {
-      ng = mid;
+      l = mid;
     }
   }
-  return ok;
+  return r;
+};
+
+/**
+ * 指定された要素より大きい値が現れる最初の位置を取得する
+ * @param list 昇順ソートされたリスト
+ * @param value 値
+ * @returns 境界インデックス
+ */
+const upperBound = <T>(list: T[], value: T): number => {
+  let r = list.length;
+  let l = -1;
+  while (1 < r - l) {
+    const mid = l + Math.floor((r - l) / 2);
+    if (list[mid] > value) {
+      r = mid;
+    } else {
+      l = mid;
+    }
+  }
+  return r;
 };
 
 export {
-  binarySearch,
+  lowerBound,
+  upperBound,
 };
