@@ -1,8 +1,12 @@
 import * as readline from "readline";
 
 const main = (argss: string[][]) => {
-  const A = +argss[0][0];
-  console.log(A);
+  // <in>
+  // N
+  // A B
+  const N = +argss[0][0];
+  const [A, B] = argss[1].map(Number);
+  answer(N * (A + B));
 };
 
 // ----------------------------------------------------------------------------
@@ -20,3 +24,11 @@ __reader.on('line', (line) => {
 __reader.on('close', () => {
   main(__lines.map(s => s.split(' ')));
 });
+
+const answer = (v: number | string | bigint) => {
+  if (v !== null && v !== undefined) {
+    console.log(v.toString());
+  } else {
+    console.log(v);
+  }
+};
