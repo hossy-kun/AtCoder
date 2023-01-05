@@ -1,12 +1,12 @@
-import * as readline from "readline";
+import * as readline from 'readline';
 
-const main = (argss: string[][]) => {
+const main = (argss: string[][]): string => {
   // <in>
   // N
   // A B
   const N = +argss[0][0];
   const [A, B] = argss[1].map(Number);
-  answer(N * (A + B));
+  return answer(N * (A + B));
 };
 
 // ----------------------------------------------------------------------------
@@ -22,13 +22,14 @@ __reader.on('line', (line) => {
   __lines.push(line);
 });
 __reader.on('close', () => {
-  main(__lines.map(s => s.split(' ')));
+  const a = main(__lines.map(s => s.split(' ')));
+  console.log(a);
 });
 
-const answer = (v: number | string | bigint) => {
+const answer = (v: number | string | bigint): string => {
   if (v !== null && v !== undefined) {
-    console.log(v.toString());
+    return v.toString();
   } else {
-    console.log(v);
+    return v;
   }
 };
