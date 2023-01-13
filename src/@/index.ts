@@ -33,3 +33,17 @@ const answer = (v: number | string | bigint): string => {
     return v;
   }
 };
+const answerl = (v: (number | string | bigint)[], separator = '\n'): string => {
+  if (v !== null && v !== undefined) {
+    return v.join(separator);
+  } else {
+    return v;
+  }
+};
+const answerll = (v: (number | string | bigint)[][], separators: string[] = [' ', '\n']): string => {
+  if (v !== null && v !== undefined) {
+    return v.map(l => l.join(separators[0])).join(separators[1]);
+  } else {
+    return v;
+  }
+};
