@@ -6,8 +6,7 @@
  * @returns
  */
 const gcd = (x: bigint, y: bigint): bigint => {
-  // @ts-ignore
-  return y == 0 ? x : gcd(y, x % y);
+  return y === 0n ? x : gcd(y, x % y);
 };
 
 /**
