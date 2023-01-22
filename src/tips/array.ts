@@ -20,6 +20,10 @@ const sarray2 = (n: number, m: number) => {
   return generate2DArray<string>(n, m, '');
 };
 
+const sequentialNumbers = (size: number, start = 0): number[] => {
+  return [...Array(size)].map((_, i) => i + start);
+};
+
 // Utilities
 
 const intersection = (arr1: any[], arr2: any[]): any[] => {
@@ -58,6 +62,7 @@ const nextPermutation = (arr: number[]): boolean => {
 export {
   generateArray, narray, sarray,
   generate2DArray, narray2, sarray2,
+  sequentialNumbers,
   intersection,
   nextPermutation,
 };
