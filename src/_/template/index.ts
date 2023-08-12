@@ -27,23 +27,20 @@ __reader.on('close', () => {
 });
 
 const answer = (v: number | string | bigint): string => {
-  if (v !== null && v !== undefined) {
-    return v.toString();
-  } else {
-    return v;
+  if (v === undefined || v === null) {
+    return '';
   }
+  return v.toString();
 };
 const answerl = (v: (number | string | bigint)[], separator = '\n'): string => {
-  if (v !== null && v !== undefined) {
-    return v.join(separator);
-  } else {
-    return v;
+  if (v === undefined || v === null) {
+    return '';
   }
+  return v.join(separator);
 };
 const answerll = (v: (number | string | bigint)[][], separators: string[] = [' ', '\n']): string => {
-  if (v !== null && v !== undefined) {
-    return v.map(l => l.join(separators[0])).join(separators[1]);
-  } else {
-    return v;
+  if (v === undefined || v === null) {
+    return '';
   }
+  return v.map(l => l.join(separators[0])).join(separators[1]);
 };
